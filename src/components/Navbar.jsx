@@ -11,7 +11,7 @@ const Navbar = () => {
     <nav className="flex items-center justify-between px-3 md:px-8 py-3 md:py-6 sticky top-0 left-0 bg-cBlack shadow-md">
       {/* logo */}
       <Link to="/">
-        <div className="flex text-3xl cursor-pointer">
+        <div className="flex text-3xl md:text-4xl cursor-pointer">
           <AiFillYoutube color="#f00" />
           <ImYoutube2 color="#fff" />
         </div>
