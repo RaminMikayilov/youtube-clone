@@ -8,7 +8,7 @@ const Categories = () => {
   const { activeCategory, setActiveCategory } = useYoutubeContext();
 
   return (
-    <div className="flex flex-row md:flex-col w-full md:w-1/5 overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide py-2 md:py-0 text-sm md:text-lg md:overflow-y-scroll md:h-[85vh] md:border-r-2 border-cGray">
+    <div className="flex flex-row md:flex-col w-full md:w-1/5 overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide py-2 md:py-0 text-sm md:text-lg md:overflow-y-scroll md:h-[85vh] md:border-r-2 border-cGray sticky top-[53px] z-10 md:top-[100px] left-0 bg-cBlack">
       {categories.map((category, index) => (
         <div
           key={index}

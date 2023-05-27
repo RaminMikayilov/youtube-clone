@@ -8,7 +8,7 @@ import { ImYoutube2 } from "react-icons/im";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between px-3 md:px-8 py-3 md:py-6 sticky top-0 left-0 bg-cBlack shadow-md">
+    <nav className="flex items-center justify-between px-3 md:px-8 py-3 md:py-6 sticky w-full top-0 z-10 bg-cBlack shadow-md">
       {/* logo */}
       <Link to="/">
         <div className="flex text-3xl md:text-4xl cursor-pointer">
