@@ -37,13 +37,15 @@ const VideoDetails = () => {
   } = videoDetail;
 
   return (
-    <div className="px-4 sm:px-6 md:px-10 lg:px-14 py-3 w-full text-white">
-      <div className="w-full">
+    <>
+      <div className="px-0 md:px-10 lg:px-14 sticky top-0 z-10 md:static md:z-0">
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${videoId}`}
           className="react-player"
           controls
         />
+      </div>
+      <div className="px-4 sm:px-6 md:px-10 lg:px-14 py-3 w-full text-white">
         <h1 className="md:font-bold font-semibold md:text-xl text-lg py-4 md:py-5">
           {title}
         </h1>
@@ -86,12 +88,12 @@ const VideoDetails = () => {
             ))}
           </p>
         </div>
-      </div>
 
-      <div className="w-full py-10 md:py-14">
-        <Videos videos={videos} />
+        <div className="w-full py-10 md:py-14">
+          <Videos videos={videos} />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

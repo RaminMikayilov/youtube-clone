@@ -47,6 +47,12 @@ body {
 
 @media screen and (max-width: 640px) {
   .react-player {
+    height: 45vh !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .react-player {
     height: 50vh !important;
   }
 }
