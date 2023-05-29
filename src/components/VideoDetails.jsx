@@ -27,6 +27,10 @@ const VideoDetails = () => {
     ).then((data) => setVideos(data.items));
   }, [videoId]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  },[videoId]);
+
   if (!videoDetail?.snippet) return "Loading...";
 
   const {
