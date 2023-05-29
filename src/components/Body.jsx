@@ -17,7 +17,9 @@ const Body = () => {
   return (
     <div className="flex flex-col md:flex-row p-2 md:p-3 min-h-screen">
       <Categories />
-      <Videos videos={videos} />
+      <div className="w-full md:w-4/5">
+        <Videos videos={videos} />
+      </div>
     </div>
   );
 };

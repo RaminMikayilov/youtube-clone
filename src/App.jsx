@@ -1,6 +1,7 @@
 // components
 import Navbar from "./components/Navbar";
 import Body from "./components/Body";
+import VideoDetails from "./components/VideoDetails";
 
 // context provider
 import { YoutubeContextProvider } from "./contexts/YoutubeContext";
@@ -16,6 +17,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route exact path="/" element={<Body />} />
+            <Route path="/video/:videoId" element={<VideoDetails />} />
           </Routes>
         </BrowserRouter>
       </div>
