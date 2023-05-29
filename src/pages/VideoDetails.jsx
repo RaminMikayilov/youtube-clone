@@ -53,7 +53,7 @@ const VideoDetails = () => {
           <div className="font-bold flex items-center gap-1 md:gap-2 duration-300 hover:text-gray-100 text-md md:text-lg">
             {channelTitle} <FaCheckCircle color="#ADD8E6" />
           </div>
-          <div className="flex items-center justify-evenly sm:w-1/3 md:w-1/2">
+          <div className="flex items-center sm:space-x-4 lg:space-x-6 xl:space-x-8">
             <button className="flex items-center gap-1 bg-cGray px-3 py-2 rounded-full">
               <AiFillLike color="#ADD8E6" />
               {parseInt(likeCount).toLocaleString()}
