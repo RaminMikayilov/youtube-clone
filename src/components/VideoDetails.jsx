@@ -18,6 +18,8 @@ const VideoDetails = () => {
   const [videos, setVideos] = useState(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     fetchData(`videos?part=snippet,statistics&id=${videoId}`).then((data) =>
       setVideoDetail(data.items[0])
     );
@@ -26,10 +28,6 @@ const VideoDetails = () => {
       `search?part=snippet&relatedToVideoId=${videoId}&type=video`
     ).then((data) => setVideos(data.items));
   }, [videoId]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  },[videoId]);
 
   if (!videoDetail?.snippet) return "Loading...";
 

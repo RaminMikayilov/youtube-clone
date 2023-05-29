@@ -8,11 +8,12 @@ const Body = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     setVideos([]);
     fetchData(`search?part=snippet&q=${activeCategory}`).then((data) =>
       setVideos(data.items)
     );
-    window.scrollTo(0, 0);
   }, [activeCategory]);
 
   return (
