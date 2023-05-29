@@ -1,7 +1,9 @@
+// pages
+import Home from "./pages/Home";
+import VideoDetails from "./pages/VideoDetails";
+
 // components
 import Navbar from "./components/Navbar";
-import Body from "./components/Body";
-import VideoDetails from "./components/VideoDetails";
 
 // context provider
 import { YoutubeContextProvider } from "./contexts/YoutubeContext";
@@ -16,7 +18,7 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route exact path="/" element={<Body />} />
+            <Route exact path="/" element={<Home />} />
             <Route path="/video/:videoId" element={<VideoDetails />} />
           </Routes>
         </BrowserRouter>

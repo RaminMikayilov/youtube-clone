@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Categories from "./Categories";
-import Videos from "./Videos";
+import Categories from "../components/Categories";
+import Videos from "../components/Videos";
 import useYoutubeContext from "../hooks/useYoutubeContext";
 
-const Body = () => {
+const Home = () => {
   const { activeCategory, fetchData } = useYoutubeContext();
   const [videos, setVideos] = useState([]);
 
@@ -26,4 +26,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default Home;

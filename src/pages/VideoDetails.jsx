@@ -4,7 +4,7 @@ import ReactPlayer from "react-player";
 // context
 import useYoutubeContext from "../hooks/useYoutubeContext";
 // components
-import Videos from "./Videos";
+import Videos from "../components/Videos";
 // icons
 import { FaCheckCircle } from "react-icons/fa";
 import { AiFillLike } from "react-icons/ai";
