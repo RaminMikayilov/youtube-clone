@@ -1,6 +1,7 @@
 // pages
 import Home from "./pages/Home";
 import VideoDetails from "./pages/VideoDetails";
+import ChannelDetails from "./pages/ChannelDetails";
 
 // components
 import Navbar from "./components/Navbar";
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/video/:videoId" element={<VideoDetails />} />
+            <Route path="/channel/:channelId" element={<ChannelDetails />} />
           </Routes>
         </BrowserRouter>
       </div>
