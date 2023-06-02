@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 // context
 import useYoutubeContext from "../hooks/useYoutubeContext";
@@ -29,12 +29,10 @@ const VideoDetails = () => {
     ).then((data) => setVideos(data.items));
   }, [videoId]);
 
-  if (!videoDetail?.snippet) return "Loading...";
-
-  const {
-    snippet: { title, channelId, channelTitle, description, publishedAt, tags },
-    statistics: { viewCount, likeCount },
-  } = videoDetail;
+  // const {
+  //   snippet: { title, channelId, channelTitle, description, publishedAt, tags },
+  //   statistics: { viewCount, likeCount },
+  // } = videoDetail;
 
   return (
     <>
@@ -47,16 +45,18 @@ const VideoDetails = () => {
       </div>
       <div className="px-4 sm:px-6 md:px-10 lg:px-14 py-3 w-full text-white">
         <h1 className="md:font-bold font-semibold md:text-xl text-lg py-4 md:py-5">
-          {title}
+          {videoDetail?.snippet?.title}
         </h1>
         <div className="flex items-center justify-between text-gray-300">
-          <div className="font-bold flex items-center gap-1 md:gap-2 duration-300 hover:text-gray-100 text-md md:text-lg">
-            {channelTitle} <FaCheckCircle color="#ADD8E6" />
-          </div>
+          <Link to={`/channel/${videoDetail?.snippet?.channelId}`}>
+            <div className="font-bold flex items-center gap-1 md:gap-2 duration-300 hover:text-gray-100 text-md md:text-lg">
+              {videoDetail?.snippet?.channelTitle} <FaCheckCircle color="#ADD8E6" />
+            </div>
+          </Link>
           <div className="flex items-center sm:space-x-4 lg:space-x-6 xl:space-x-8">
             <button className="flex items-center gap-1 bg-cGray px-3 py-2 rounded-full">
               <AiFillLike color="#ADD8E6" />
-              {parseInt(likeCount).toLocaleString()}
+              {parseInt(videoDetail?.statistics?.likeCount).toLocaleString()}
             </button>
             <button className="hidden md:flex items-center gap-1 bg-cGray px-3 py-2 rounded-full">
               <FaShare color="#ADD8E6" />
@@ -72,16 +72,16 @@ const VideoDetails = () => {
         {/* description */}
         <div className="bg-cGray py-3 md:py-4 px-4 md:px-5 rounded-md mt-5 md:text-[16px] text-[14px]">
           <p>
-            {parseInt(viewCount).toLocaleString()} views •{" "}
-            {publishedAt.slice(0, 10)}
+            {parseInt(videoDetail?.statistics?.viewCount).toLocaleString()} views •{" "}
+            {videoDetail?.snippet?.publishedAt.slice(0, 10)}
           </p>
           <p className="py-3">
-            {description.length > 700
-              ? description.slice(0, 700) + "..."
-              : description}
+            {videoDetail?.snippet?.description.length > 700
+              ? videoDetail?.snippet?.description.slice(0, 700) + "..."
+              : videoDetail?.snippet?.description}
           </p>
           <p>
-            {tags?.map((tag, index) => (
+            {videoDetail?.snippet?.tags?.map((tag, index) => (
               <a href="#" key={index} className="text-blue-500">
                 #{tag} &nbsp;
               </a>
