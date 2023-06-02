@@ -5,7 +5,7 @@ import Videos from "../components/Videos";
 
 const ChannelDetails = () => {
   const { channelId } = useParams();
-  const { fetchData } = useYoutubeContext();
+  const { fetchData, convertNumber } = useYoutubeContext();
   const [channelDetail, setChannelDetail] = useState([]);
   const [videos, setVideos] = useState([]);
 
@@ -20,20 +20,6 @@ const ChannelDetails = () => {
       setVideos(data.items);
     });
   }, [channelId]);
-
-  function convertNumber(number) {
-    if (number >= 1000000) {
-      return number % 1000000 === 0
-        ? number / 1000000 + "M"
-        : (number / 1000000).toFixed(1) + "M";
-    } else if (number >= 1000) {
-      return number % 1000 === 0
-        ? number / 1000 + "K"
-        : (number / 1000).toFixed(1) + "K";
-    } else {
-      return number;
-    }
-  }
 
   // const {
   //   brandingSettings: { image },

@@ -8,10 +8,10 @@ const VideoCard = ({ video }) => {
   } = video;
 
   return (
-    <div className="w-[300px] md:w-[320px] h-[300px] md:h-[320px]">
+    <div className="w-[300px] md:w-[320px] h-[300px] md:h-[320px] hover:opacity-80 duration-300 cursor-pointer">
       <Link to={`/video/${videoId}`}>
         <img
-          className="rounded-xl hover:rounded-none w-full h-[170px] md:h-[210px] object-cover hover:opacity-80 duration-300 cursor-pointer"
+          className="rounded-xl hover:rounded-none w-full h-[170px] md:h-[210px] object-cover duration-300"
           src={thumbnails.medium.url}
           alt={title}
         />
@@ -22,13 +22,12 @@ const VideoCard = ({ video }) => {
         </h2>
 
         {/* channel */}
-        <Link to="/">
-          <p className="text-sm text-gray-400 py-2 hover:text-gray-100 duration-300 font-semibold">
-            {channelTitle.length > 30
-              ? channelTitle.slice(0, 30) + "..."
-              : channelTitle}
-          </p>
-        </Link>
+
+        <p className="text-sm text-gray-400 py-2 font-semibold">
+          {channelTitle.length > 30
+            ? channelTitle.slice(0, 30) + "..."
+            : channelTitle}
+        </p>
       </div>
     </div>
   );

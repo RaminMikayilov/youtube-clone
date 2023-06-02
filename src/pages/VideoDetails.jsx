@@ -13,7 +13,7 @@ import { HiScissors } from "react-icons/hi";
 
 const VideoDetails = () => {
   const { videoId } = useParams();
-  const { fetchData } = useYoutubeContext();
+  const { fetchData, convertNumber } = useYoutubeContext();
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
 
@@ -50,13 +50,14 @@ const VideoDetails = () => {
         <div className="flex items-center justify-between text-gray-300">
           <Link to={`/channel/${videoDetail?.snippet?.channelId}`}>
             <div className="font-bold flex items-center gap-1 md:gap-2 duration-300 hover:text-gray-100 text-md md:text-lg">
-              {videoDetail?.snippet?.channelTitle} <FaCheckCircle color="#ADD8E6" />
+              {videoDetail?.snippet?.channelTitle}{" "}
+              <FaCheckCircle color="#ADD8E6" />
             </div>
           </Link>
           <div className="flex items-center sm:space-x-4 lg:space-x-6 xl:space-x-8">
             <button className="flex items-center gap-1 bg-cGray px-3 py-2 rounded-full">
               <AiFillLike color="#ADD8E6" />
-              {parseInt(videoDetail?.statistics?.likeCount).toLocaleString()}
+              {convertNumber(parseInt(videoDetail?.statistics?.likeCount))}
             </button>
             <button className="hidden md:flex items-center gap-1 bg-cGray px-3 py-2 rounded-full">
               <FaShare color="#ADD8E6" />
@@ -72,10 +73,10 @@ const VideoDetails = () => {
         {/* description */}
         <div className="bg-cGray py-3 md:py-4 px-4 md:px-5 rounded-md mt-5 md:text-[16px] text-[14px]">
           <p>
-            {parseInt(videoDetail?.statistics?.viewCount).toLocaleString()} views •{" "}
-            {videoDetail?.snippet?.publishedAt.slice(0, 10)}
+            {convertNumber(parseInt(videoDetail?.statistics?.viewCount))} views
+            • {videoDetail?.snippet?.publishedAt.slice(0, 10)}
           </p>
-          <p className="py-3">
+          <p className="py-3 whitespace-break-spaces overflow-hidden">
             {videoDetail?.snippet?.description.length > 700
               ? videoDetail?.snippet?.description.slice(0, 700) + "..."
               : videoDetail?.snippet?.description}

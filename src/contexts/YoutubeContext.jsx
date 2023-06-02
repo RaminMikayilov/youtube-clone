@@ -5,7 +5,7 @@ export const YoutubeContext = createContext();
 
 const YoutubeContextProvider = ({ children }) => {
   const [activeCategory, setActiveCategory] = useState("New");
-  
+
   const BASE_URL = "https://youtube-v31.p.rapidapi.com";
 
   const options = {
@@ -27,7 +27,21 @@ const YoutubeContextProvider = ({ children }) => {
     }
   };
 
-  const value = { activeCategory, setActiveCategory, fetchData };
+  function convertNumber(number) {
+    if (number >= 1000000) {
+      return number % 1000000 === 0
+        ? number / 1000000 + "M"
+        : (number / 1000000).toFixed(1) + "M";
+    } else if (number >= 1000) {
+      return number % 1000 === 0
+        ? number / 1000 + "K"
+        : (number / 1000).toFixed(1) + "K";
+    } else {
+      return number;
+    }
+  }
+
+  const value = { activeCategory, setActiveCategory, fetchData, convertNumber };
 
   return (
     <YoutubeContext.Provider value={value}>{children}</YoutubeContext.Provider>
