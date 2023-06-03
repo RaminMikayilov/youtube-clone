@@ -22,9 +22,9 @@ const SearchBar = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <span className="text-xl md:text-2xl cursor-pointer px-2 md:p-2">
+      <button className="text-xl md:text-2xl cursor-pointer px-2 md:p-2">
         <AiOutlineSearch color="#fff" />
-      </span>
+      </button>
     </form>
   );
 };
