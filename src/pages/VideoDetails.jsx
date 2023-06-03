@@ -5,28 +5,35 @@ import ReactPlayer from "react-player";
 import useYoutubeContext from "../hooks/useYoutubeContext";
 // components
 import Videos from "../components/Videos";
+import VideosLoader from "../components/VideosLoader";
 // icons
 import { FaCheckCircle } from "react-icons/fa";
 import { AiFillLike } from "react-icons/ai";
 import { FaShare } from "react-icons/fa";
 import { HiScissors } from "react-icons/hi";
+// skeleton
+import Skeleton from "react-loading-skeleton";
 
 const VideoDetails = () => {
   const { videoId } = useParams();
   const { fetchData, convertNumber } = useYoutubeContext();
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
+    setLoading(true);
     fetchData(`videos?part=snippet,statistics&id=${videoId}`).then((data) =>
       setVideoDetail(data.items[0])
     );
 
     fetchData(
       `search?part=snippet&relatedToVideoId=${videoId}&type=video`
-    ).then((data) => setVideos(data.items));
+    ).then((data) => {
+      setVideos(data.items);
+      setLoading(false);
+    });
   }, [videoId]);
 
   // const {
@@ -45,19 +52,24 @@ const VideoDetails = () => {
       </div>
       <div className="px-4 sm:px-6 md:px-10 lg:px-14 py-3 w-full text-white">
         <h1 className="md:font-bold font-semibold md:text-xl text-lg py-4 md:py-5">
-          {videoDetail?.snippet?.title}
+          {videoDetail?.snippet?.title || <Skeleton className="w-3/5" />}
         </h1>
         <div className="flex items-center justify-between text-gray-300">
           <Link to={`/channel/${videoDetail?.snippet?.channelId}`}>
             <div className="font-bold flex items-center gap-1 md:gap-2 duration-300 hover:text-gray-100 text-md md:text-lg">
-              {videoDetail?.snippet?.channelTitle}{" "}
+              <div className="w-full">
+                {videoDetail?.snippet?.channelTitle || (
+                  <Skeleton className="w-[200px]" />
+                )}{" "}
+              </div>
               <FaCheckCircle color="#ADD8E6" />
             </div>
           </Link>
           <div className="flex items-center sm:space-x-4 lg:space-x-6 xl:space-x-8">
             <button className="flex items-center gap-1 bg-cGray px-3 py-2 rounded-full">
               <AiFillLike color="#ADD8E6" />
-              {convertNumber(parseInt(videoDetail?.statistics?.likeCount))}
+              {convertNumber(parseInt(videoDetail?.statistics?.likeCount)) ||
+                "123"}
             </button>
             <button className="hidden md:flex items-center gap-1 bg-cGray px-3 py-2 rounded-full">
               <FaShare color="#ADD8E6" />
@@ -91,7 +103,7 @@ const VideoDetails = () => {
         </div>
 
         <div className="w-full py-10 md:py-14">
-          <Videos videos={videos} />
+          {loading ? <VideosLoader /> : <Videos videos={videos} />}
         </div>
       </div>
     </>

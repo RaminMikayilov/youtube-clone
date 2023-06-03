@@ -17,7 +17,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <YoutubeContextProvider>
-      <div className="bg-cBlack h-screen">
+      <div className="bg-cBlack min-h-screen">
         <BrowserRouter>
           <Navbar />
           <Routes>
