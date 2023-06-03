@@ -16,6 +16,8 @@ const ChannelDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     fetchData(`channels?part=snippet&id=${channelId}`).then((data) =>
       setChannelDetail(data?.items[0])
     );
