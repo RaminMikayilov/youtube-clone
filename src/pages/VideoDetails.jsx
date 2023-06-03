@@ -14,7 +14,7 @@ import { HiScissors } from "react-icons/hi";
 // skeleton
 import Skeleton from "react-loading-skeleton";
 // react-helmet
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const VideoDetails = () => {
   const { videoId } = useParams();
@@ -44,9 +44,9 @@ const VideoDetails = () => {
   // } = videoDetail;
 
   return (
-    <>
+    <HelmetProvider>
       <Helmet>
-        <title>{videoDetail?.snippet?.title} - YouTube</title>
+        <title>{`${videoDetail?.snippet?.title} - YouTube`}</title>
       </Helmet>
       <div className="px-0 md:px-10 lg:px-14 sticky top-0 z-10 md:static md:z-0">
         <ReactPlayer
@@ -111,7 +111,7 @@ const VideoDetails = () => {
           {loading ? <VideosLoader /> : <Videos videos={videos} />}
         </div>
       </div>
-    </>
+    </HelmetProvider>
   );
 };
 

@@ -6,7 +6,7 @@ import Videos from "../components/Videos";
 import VideosLoader from "../components/VideosLoader";
 
 import Skeleton from "react-loading-skeleton";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const ChannelDetails = () => {
   const { channelId } = useParams();
@@ -35,57 +35,60 @@ const ChannelDetails = () => {
   // } = channelDetail;
 
   return (
-    <div className="text-white">
-      <Helmet> 
-        <title>{channelDetail?.snippet?.title} - YouTube</title>
-      </Helmet>
-      {channelDetail?.brandingSettings?.image?.bannerExternalUrl && (
-        <img
-          src={channelDetail?.brandingSettings?.image?.bannerExternalUrl}
-          alt={channelDetail?.snippet?.title}
-          className="w-full h-[130px] sm:h-[160px] md:h-[190px] lg:h-[220px] xl:h-[250px] object-cover"
-        />
-      )}
-
-      <div className="flex flex-col md:flex-row items-center py-3 px-2 sm:px-6 md:px-12 lg:px-20">
-        {channelDetail?.snippet?.thumbnails?.default?.url ? (
+    <HelmetProvider>
+      <div className="text-white">
+        <Helmet>
+          <title>{`${channelDetail?.snippet?.title} - YouTube`}</title>
+        </Helmet>
+        {channelDetail?.brandingSettings?.image?.bannerExternalUrl && (
           <img
-            src={channelDetail?.snippet?.thumbnails?.default?.url}
+            src={channelDetail?.brandingSettings?.image?.bannerExternalUrl}
             alt={channelDetail?.snippet?.title}
-            className="rounded-full h-[100px] w-[100px] md:w-[128px] md:h-[128px]"
+            className="w-full h-[130px] sm:h-[160px] md:h-[190px] lg:h-[220px] xl:h-[250px] object-cover"
           />
-        ) : (
-          <Skeleton className="rounded-full h-[100px] w-[100px] md:w-[128px] md:h-[128px]" />
         )}
 
-        <div className="flex flex-col items-center md:items-start p-3">
-          <h1 className="font-bold text-xl md:text-2xl py-2 md:py-1">
-            {channelDetail?.snippet?.title || (
-              <Skeleton className="w-[200px]" />
-            )}
-          </h1>
+        <div className="flex flex-col md:flex-row items-center py-3 px-2 sm:px-6 md:px-12 lg:px-20">
+          {channelDetail?.snippet?.thumbnails?.default?.url ? (
+            <img
+              src={channelDetail?.snippet?.thumbnails?.default?.url}
+              alt={channelDetail?.snippet?.title}
+              className="rounded-full h-[100px] w-[100px] md:w-[128px] md:h-[128px]"
+            />
+          ) : (
+            <Skeleton className="rounded-full h-[100px] w-[100px] md:w-[128px] md:h-[128px]" />
+          )}
 
-          <div className="flex text-gray-300 space-x-4">
-            <p>
-              {channelDetail?.snippet?.customUrl || (
-                <Skeleton className="w-[70px]" />
+          <div className="flex flex-col items-center md:items-start p-3">
+            <h1 className="font-bold text-xl md:text-2xl py-2 md:py-1">
+              {channelDetail?.snippet?.title || (
+                <Skeleton className="w-[200px]" />
               )}
-            </p>
-            <p>
-              {convertNumber(
-                parseInt(channelDetail?.statistics?.subscriberCount || 0)
-              )}{" "}
-              subscribers
-            </p>
-            <p>
-              {convertNumber(channelDetail?.statistics?.videoCount) || 0} videos
-            </p>
+            </h1>
+
+            <div className="flex text-gray-300 space-x-4">
+              <p>
+                {channelDetail?.snippet?.customUrl || (
+                  <Skeleton className="w-[70px]" />
+                )}
+              </p>
+              <p>
+                {convertNumber(
+                  parseInt(channelDetail?.statistics?.subscriberCount || 0)
+                )}{" "}
+                subscribers
+              </p>
+              <p>
+                {convertNumber(channelDetail?.statistics?.videoCount) || 0}{" "}
+                videos
+              </p>
+            </div>
           </div>
         </div>
+        <hr className="my-5" />
+        {loading ? <VideosLoader /> : <Videos videos={videos} />}
       </div>
-      <hr className="my-5" />
-      {loading ? <VideosLoader /> : <Videos videos={videos} />}
-    </div>
+    </HelmetProvider>
   );
 };
 

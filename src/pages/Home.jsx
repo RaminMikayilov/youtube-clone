@@ -4,7 +4,7 @@ import useYoutubeContext from "../hooks/useYoutubeContext";
 import Categories from "../components/Categories";
 import Videos from "../components/Videos";
 import VideosLoader from "../components/VideosLoader";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const Home = () => {
   const { activeCategory, fetchData } = useYoutubeContext();
@@ -23,15 +23,17 @@ const Home = () => {
   }, [activeCategory]);
 
   return (
-    <div className="flex flex-col md:flex-row p-2 md:p-3 min-h-screen">
-      <Helmet>
-        <title>Youtube</title>
-      </Helmet>
-      <Categories />
-      <div className="w-full md:w-4/5">
-        {loading ? <VideosLoader /> : <Videos videos={videos} />}{" "}
+    <HelmetProvider>
+      <div className="flex flex-col md:flex-row p-2 md:p-3 min-h-screen">
+        <Helmet>
+          <title>Youtube</title>
+        </Helmet>
+        <Categories />
+        <div className="w-full md:w-4/5">
+          {loading ? <VideosLoader /> : <Videos videos={videos} />}{" "}
+        </div>
       </div>
-    </div>
+    </HelmetProvider>
   );
 };
 
