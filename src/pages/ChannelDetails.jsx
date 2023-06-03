@@ -4,7 +4,9 @@ import useYoutubeContext from "../hooks/useYoutubeContext";
 // components
 import Videos from "../components/Videos";
 import VideosLoader from "../components/VideosLoader";
+
 import Skeleton from "react-loading-skeleton";
+import { Helmet } from "react-helmet";
 
 const ChannelDetails = () => {
   const { channelId } = useParams();
@@ -34,6 +36,9 @@ const ChannelDetails = () => {
 
   return (
     <div className="text-white">
+      <Helmet> 
+        <title>{channelDetail?.snippet?.title} - YouTube</title>
+      </Helmet>
       {channelDetail?.brandingSettings?.image?.bannerExternalUrl && (
         <img
           src={channelDetail?.brandingSettings?.image?.bannerExternalUrl}

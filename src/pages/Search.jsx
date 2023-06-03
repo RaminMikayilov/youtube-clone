@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useYoutubeContext from "../hooks/useYoutubeContext";
 import Videos from "../components/Videos";
 import VideosLoader from "../components/VideosLoader";
+import { Helmet } from "react-helmet";
 
 const search = () => {
   const { searchQuery } = useParams();
@@ -23,6 +24,9 @@ const search = () => {
 
   return (
     <div className="py-3">
+      <Helmet>
+        <title>{searchQuery} - YouTube</title>
+      </Helmet>
       {loading ? <VideosLoader /> : <Videos videos={videos} />}
     </div>
   );

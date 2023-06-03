@@ -13,6 +13,8 @@ import { FaShare } from "react-icons/fa";
 import { HiScissors } from "react-icons/hi";
 // skeleton
 import Skeleton from "react-loading-skeleton";
+// react-helmet
+import { Helmet } from "react-helmet";
 
 const VideoDetails = () => {
   const { videoId } = useParams();
@@ -43,6 +45,9 @@ const VideoDetails = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{videoDetail?.snippet?.title} - YouTube</title>
+      </Helmet>
       <div className="px-0 md:px-10 lg:px-14 sticky top-0 z-10 md:static md:z-0">
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${videoId}`}
@@ -85,8 +90,8 @@ const VideoDetails = () => {
         {/* description */}
         <div className="bg-cGray py-3 md:py-4 px-4 md:px-5 rounded-md mt-5 md:text-[16px] text-[14px]">
           <p>
-            {convertNumber(parseInt(videoDetail?.statistics?.viewCount))} views
-            • {videoDetail?.snippet?.publishedAt.slice(0, 10)}
+            {convertNumber(parseInt(videoDetail?.statistics?.viewCount)) || 0}{" "}
+            views • {videoDetail?.snippet?.publishedAt.slice(0, 10)}
           </p>
           <p className="py-3 whitespace-break-spaces overflow-hidden">
             {videoDetail?.snippet?.description.length > 700
