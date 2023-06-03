@@ -15,20 +15,21 @@ const VideoCard = ({ video }) => {
           src={thumbnails.medium.url}
           alt={title}
         />
+
+        <div className="p-1">
+          <h2 className="text-md mt-2">
+            {title.length > 70 ? title.slice(0, 70) + "..." : title}
+          </h2>
+
+          {/* channel */}
+
+          <p className="text-sm text-gray-400 py-2 font-semibold">
+            {channelTitle.length > 30
+              ? channelTitle.slice(0, 30) + "..."
+              : channelTitle}
+          </p>
+        </div>
       </Link>
-      <div className="p-1">
-        <h2 className="text-md mt-2">
-          {title.length > 30 ? title.slice(0, 30) + "..." : title}
-        </h2>
-
-        {/* channel */}
-
-        <p className="text-sm text-gray-400 py-2 font-semibold">
-          {channelTitle.length > 30
-            ? channelTitle.slice(0, 30) + "..."
-            : channelTitle}
-        </p>
-      </div>
     </div>
   );
 };

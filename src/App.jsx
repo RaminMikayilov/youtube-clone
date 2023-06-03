@@ -2,6 +2,7 @@
 import Home from "./pages/Home";
 import VideoDetails from "./pages/VideoDetails";
 import ChannelDetails from "./pages/ChannelDetails";
+import Search from "./pages/Search";
 
 // components
 import Navbar from "./components/Navbar";
@@ -22,6 +23,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route path="/video/:videoId" element={<VideoDetails />} />
             <Route path="/channel/:channelId" element={<ChannelDetails />} />
+            <Route path="/search/:searchQuery" element={<Search />} />
           </Routes>
         </BrowserRouter>
       </div>
