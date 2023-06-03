@@ -1,6 +1,6 @@
 # YouTube Clone - [Live Link](https://rm-youtubeclone.netlify.app/) :point_left:
 
-This is a YouTube clone built with React and YouTube API. It allows users to search for videos and watch them.
+This is a YouTube clone built with React and [YouTube API](https://rapidapi.com/ytdlfree/api/youtube-v31). It allows users to search for videos and watch them.
 
 ![app screenshot](./src/assets/images/screenshot.png)
 
