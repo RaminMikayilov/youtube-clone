@@ -69,7 +69,7 @@ const ChannelDetails = () => {
               )}
             </h1>
 
-            <div className="flex text-gray-300 space-x-4">
+            <div className="flex text-gray-300 space-x-2 sm:space-x-3 md:space-x-4 text-[11px] sm:text-[13px] md:text-[16px]">
               <p>
                 {channelDetail?.snippet?.customUrl || (
                   <Skeleton className="w-[70px]" />
