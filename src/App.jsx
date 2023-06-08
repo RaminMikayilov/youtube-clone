@@ -1,6 +1,6 @@
 // pages
 import Home from "./pages/Home";
-import VideoDetails from "./pages/VideoDetails";
+import VideoDetails from "./pages/VideoDetails/VideoDetails";
 import ChannelDetails from "./pages/ChannelDetails";
 import Search from "./pages/Search";
 import Error from "./pages/Error";

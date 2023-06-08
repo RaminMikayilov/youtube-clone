@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 // context
-import useYoutubeContext from "../hooks/useYoutubeContext";
+import useYoutubeContext from "../../hooks/useYoutubeContext";
 // components
-import Videos from "../components/Videos";
-import VideosLoader from "../components/VideosLoader";
+import Videos from "../../components/Videos";
+import VideosLoader from "../../components/VideosLoader";
 // icons
 import { FaCheckCircle } from "react-icons/fa";
 import { AiFillLike } from "react-icons/ai";
@@ -15,6 +15,8 @@ import { HiScissors } from "react-icons/hi";
 import Skeleton from "react-loading-skeleton";
 // react-helmet
 import { Helmet, HelmetProvider } from "react-helmet-async";
+// css
+import "./VideoDetails.css";
 
 const VideoDetails = () => {
   const { videoId } = useParams();

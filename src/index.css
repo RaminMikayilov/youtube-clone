@@ -38,21 +38,3 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgb(80, 80, 80);
 }
-
-/* react player  */
-.react-player {
-  width: 100% !important;
-  height: 70vh !important;
-}
-
-@media screen and (max-width: 640px) {
-  .react-player {
-    height: 45vh !important;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .react-player {
-    height: 50vh !important;
-  }
-}
