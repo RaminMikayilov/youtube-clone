@@ -17,7 +17,7 @@ This is a YouTube clone built with React and [YouTube API](https://rapidapi.com/
 To get started with this project, follow these steps:
 
 1. Clone this repository to your local machine using git clone https://github.com/RaminMikayilov/Youtube-clone.git
-2. Navigate to the project directory using cd movie-app
+2. Navigate to the project directory using cd youtube-clone
 3. Install the necessary dependencies using npm install
 4. Start the development server using npm run dev(because I use vite react)
 
@@ -29,7 +29,7 @@ The app should now be running on localhost
 - Context Api
 - Tailwind CSS
 - YouTube API
-- Reacte Helmet
+- React Helmet
 - React Router Dom
 
 ## Contributing
